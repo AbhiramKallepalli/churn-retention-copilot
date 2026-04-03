@@ -71,15 +71,9 @@ Full project specification is available in the
 
 ## Tech Stack
 
-Core Platform:
-- Python 3.x
+## Tech Stack
 
-ML & Data Ecosystem:
-- scikit-learn ecosystem (XGBoost / LightGBM, SHAP, pandas)
-
-LLM Runtime:
-- Ollama (Phi-3 Mini)
-
-Interface:
-- CLI (Phase 1), Streamlit (Phase 2)
+- Python 3.x (pandas, scikit-learn, XGBoost, 
+  LightGBM, SHAP, pytest)
+- Ollama + Phi-3 Mini (local LLM runtime)
 ```
