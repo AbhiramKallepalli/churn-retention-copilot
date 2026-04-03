@@ -14,7 +14,7 @@ of results through a local LLM-powered Q&A interface.
 | ML Model | XGBoost / LightGBM |
 | Explainability | SHAP values |
 | LLM | Phi-3 Mini (via Ollama, runs locally) |
-| Interface | Command-Line (CLI) |
+| Interface | CLI (Phase 1) + Streamlit Web UI (Phase 2) |
 | Dataset | IBM Telco Customer Churn (Kaggle) |
 | Status | Week 1 — Specification complete |
 
@@ -25,12 +25,15 @@ of results through a local LLM-powered Q&A interface.
 **Layer 1 — ML Prediction**
 Trains an XGBoost or LightGBM model on customer 
 data to predict churn probability. Uses SHAP values 
-to explain which factors contributed to each prediction.
+to explain which factors contributed to each 
+prediction. The model is trained once, saved to disk, 
+and reused for all future predictions.
 
 **Layer 2 — LLM Q&A Agent**
 A local Phi-3 Mini model runs on your machine via 
 Ollama. You can ask free-form questions about 
-prediction results and customer data.
+prediction results and customer data. The LLM only 
+interprets and explains — it does not make predictions.
 
 ---
 
@@ -51,14 +54,49 @@ python main.py --file customers.csv --all
 
 ---
 
+## Interface Plan
+
+**Phase 1 — Command-Line Interface (CLI)**
+
+The initial prototype uses a CLI for rapid development 
+and testing of the core ML model and LLM Q&A 
+integration. This allows full focus on building and 
+validating the pipeline before adding a visual layer.
+
+**Phase 2 — Web Interface (Streamlit)**
+
+A lightweight web-based UI built using Streamlit, 
+making the tool accessible to non-technical business 
+users without requiring command-line knowledge.
+
+The Streamlit interface includes three pages:
+
+- **Upload and Predict** — Upload a CSV file, run 
+  the ML model, view all customers with churn 
+  probability and risk category in a table
+- **Customer Detail** — Enter a customer ID to view 
+  full SHAP analysis and ask questions to the 
+  LLM Q&A agent
+- **Summary Dashboard** — View risk distribution 
+  chart and average monthly charges per risk category
+
+---
+
 ## Repository Structure
-```
 /data       Dataset files (CSV)
 /src        Python source code
 /tests      Unit tests
 /outputs    Session logs and prediction results
 /docs       Project specification document
-```
+
+---
+
+## Tech Stack
+
+- Python 3.x (pandas, scikit-learn, XGBoost, 
+  LightGBM, SHAP, pytest)
+- Ollama + Phi-3 Mini (local LLM runtime)
+- Streamlit (web interface — Phase 2)
 
 ---
 
@@ -66,14 +104,3 @@ python main.py --file customers.csv --all
 
 Full project specification is available in the 
 [/docs](/docs) folder.
-
----
-
-## Tech Stack
-
-## Tech Stack
-
-- Python 3.x (pandas, scikit-learn, XGBoost, 
-  LightGBM, SHAP, pytest)
-- Ollama + Phi-3 Mini (local LLM runtime)
-```
