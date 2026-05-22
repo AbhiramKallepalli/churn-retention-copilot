@@ -11,10 +11,10 @@ of results through a local LLM-powered Q&A interface.
 | Item | Details |
 |------|---------|
 | Problem | Customer churn prediction and retention |
-| ML Model | XGBoost / LightGBM |
+| ML Model | XGBoost |
 | Explainability | SHAP values |
 | LLM | Phi-3 Mini (via Ollama, runs locally) |
-| Interface | CLI (Phase 1) + Streamlit Web UI (Phase 2) |
+| Interface | CLI + Streamlit Web UI |
 | Dataset | IBM Telco Customer Churn (Kaggle) |
 | Status | Project Complete — May 2026 |
 
@@ -23,11 +23,11 @@ of results through a local LLM-powered Q&A interface.
 ## How It Works
 
 **Layer 1 — ML Prediction**
-Trains an XGBoost or LightGBM model on customer 
-data to predict churn probability. Uses SHAP values 
-to explain which factors contributed to each 
-prediction. The model is trained once, saved to disk, 
-and reused for all future predictions.
+Trains an XGBoost model on customer data to predict 
+churn probability. Uses SHAP values to explain which 
+factors contributed to each prediction. The model is 
+trained once, saved to disk, and reused for all 
+future predictions.
 
 **Layer 2 — LLM Q&A Agent**
 A local Phi-3 Mini model runs on your machine via 
@@ -37,39 +37,72 @@ interprets and explains — it does not make predictions.
 
 ---
 
-## Example Usage
+## Setup Instructions
+
+### Prerequisites
+- Python 3.12+
+- Ollama (download from https://ollama.com)
+
+### Installation
+
+**Step 1 — Clone the repository**
 ```bash
-# Analyze one customer
-python main.py --file customers.csv --customer_id 101
+git clone https://github.com/AbhiramKallepalli/churn-retention-copilot
+cd churn-retention-copilot
+```
 
-# Get all high risk customers
-python main.py --file customers.csv --high-risk
+**Step 2 — Create virtual environment**
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
 
-# Summary statistics
-python main.py --file customers.csv --summary
+**Step 3 — Install dependencies**
+```bash
+pip install -r requirements.txt
+```
 
-# Process full dataset
-python main.py --file customers.csv --all
+**Step 4 — Install Ollama and Phi-3 Mini**
+```bash
+# Download Ollama from https://ollama.com
+# Then run:
+ollama pull phi3:mini
+```
+
+**Step 5 — Train the ML model**
+```bash
+python src/scorer.py
 ```
 
 ---
 
-## Interface Plan
+## Running the Application
 
-**Phase 1 — Command-Line Interface (CLI)**
+### Option 1 — Web Interface (Recommended)
+Double click `run_app.bat`
+Browser opens automatically with the Streamlit app.
 
-The initial prototype uses a CLI for rapid development 
-and testing of the core ML model and LLM Q&A 
-integration. This allows full focus on building and 
-validating the pipeline before adding a visual layer.
+### Option 2 — Command Line Interface
 
-**Phase 2 — Web Interface (Streamlit)**
+```bash
+# Summary statistics
+python src/main.py --file data/WA_Fn-UseC_-Telco-Customer-Churn.csv --summary
 
-A lightweight web-based UI built using Streamlit, 
-making the tool accessible to non-technical business 
-users without requiring command-line knowledge.
+# List high risk customers
+python src/main.py --file data/WA_Fn-UseC_-Telco-Customer-Churn.csv --high-risk
 
-The Streamlit interface includes three pages:
+# Analyze specific customer
+python src/main.py --file data/WA_Fn-UseC_-Telco-Customer-Churn.csv --customer_id 9497-QCMMS
+
+# Process all customers
+python src/main.py --file data/WA_Fn-UseC_-Telco-Customer-Churn.csv --all
+```
+
+---
+
+## Streamlit Web Interface
+
+Three pages available:
 
 - **Upload and Predict** — Upload a CSV file, run 
   the ML model, view all customers with churn 
@@ -82,25 +115,39 @@ The Streamlit interface includes three pages:
 
 ---
 
+## Model Performance
+
+| Metric | Value |
+|--------|-------|
+| Accuracy | 80.20% |
+| AUC Score | 84.42% |
+| Precision | 65.37% |
+| Recall | 54.01% |
+
+---
+
 ## Repository Structure
+
 /data       Dataset files (CSV)
 /src        Python source code
 /tests      Unit tests
 /outputs    Session logs and prediction results
-/docs       Project specification document
+/docs       Project specification and final report
 
 ---
 
 ## Tech Stack
 
-- Python 3.x (pandas, scikit-learn, XGBoost, 
-  LightGBM, SHAP, pytest)
+- Python 3.x (pandas, scikit-learn, XGBoost, SHAP)
 - Ollama + Phi-3 Mini (local LLM runtime)
-- Streamlit (web interface — Phase 2)
+- Streamlit (web interface)
 
 ---
 
 ## Documentation
 
-Full project specification is available in the 
-[/docs](/docs) folder.
+Full project specification and final report are 
+available in the [/docs](/docs) folder.
+
+
+
