@@ -358,6 +358,3 @@ The tool achieved strong predictive performance with an AUC of 84.42% and demons
 The project provided valuable hands-on experience with the full machine learning pipeline from data preprocessing through model deployment, as well as practical experience integrating large language models into real-world business applications.
 
 ---
-
-*Report prepared as part of the SPS Corps - Analytics Initiative*
-*May 2026*
