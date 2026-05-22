@@ -146,13 +146,34 @@ All 7 tests pass successfully:
 
 ## Repository Structure
 
-/data       Dataset files (CSV)
-/src        Python source code
-/tests      Unit tests
-/outputs    Session logs and prediction results
-/docs       Project specification and final report
-
----
+```
+churn-retention-copilot/
+├── data/
+│   └── WA_Fn-UseC_-Telco-Customer-Churn.csv
+├── src/
+│   ├── data_loader.py       # Load and explore dataset
+│   ├── preprocessor.py      # Clean and encode data
+│   ├── scorer.py            # Train XGBoost model
+│   ├── shap_explainer.py    # Generate SHAP values
+│   ├── llm_interface.py     # LLM Q&A via Ollama
+│   ├── main.py              # CLI commands
+│   ├── logger.py            # Session logging
+│   └── streamlit_app.py     # Web interface
+├── tests/
+│   └── test_churn.py        # Pytest unit tests
+├── outputs/
+│   ├── predictions.csv      # ML model predictions
+│   └── session.log          # Query logs
+├── docs/
+│   ├── PROJECT SPECIFICATION.docx
+│   ├── PROJECT SPECIFICATION.pdf
+│   ├── final_report.docx
+│   └── final_report.md
+├── README.md
+├── requirements.txt
+├── run_app.bat              # Double-click to start app
+└── .gitignore
+```
 
 ## Tech Stack
 
