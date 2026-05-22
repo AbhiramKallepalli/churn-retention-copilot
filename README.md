@@ -16,24 +16,24 @@ of results through a local LLM-powered Q&A interface.
 | LLM | Phi-3 Mini (via Ollama, runs locally) |
 | Interface | CLI + Streamlit Web UI |
 | Dataset | IBM Telco Customer Churn (Kaggle) |
-| Status | Project Complete — May 2026 |
+| Status | Project Complete - May 2026 |
 
 ---
 
 ## How It Works
 
-**Layer 1 — ML Prediction**
+**Layer 1 - ML Prediction**
 Trains an XGBoost model on customer data to predict 
 churn probability. Uses SHAP values to explain which 
 factors contributed to each prediction. The model is 
 trained once, saved to disk, and reused for all 
 future predictions.
 
-**Layer 2 — LLM Q&A Agent**
+**Layer 2 - LLM Q&A Agent**
 A local Phi-3 Mini model runs on your machine via 
 Ollama. You can ask free-form questions about 
 prediction results and customer data. The LLM only 
-interprets and explains — it does not make predictions.
+interprets and explains - it does not make predictions.
 
 ---
 
@@ -45,31 +45,31 @@ interprets and explains — it does not make predictions.
 
 ### Installation
 
-**Step 1 — Clone the repository**
+**Step 1 - Clone the repository**
 ```bash
 git clone https://github.com/AbhiramKallepalli/churn-retention-copilot
 cd churn-retention-copilot
 ```
 
-**Step 2 — Create virtual environment**
+**Step 2 - Create virtual environment**
 ```bash
 python -m venv venv
 venv\Scripts\activate
 ```
 
-**Step 3 — Install dependencies**
+**Step 3 - Install dependencies**
 ```bash
 pip install -r requirements.txt
 ```
 
-**Step 4 — Install Ollama and Phi-3 Mini**
+**Step 4 - Install Ollama and Phi-3 Mini**
 ```bash
 # Download Ollama from https://ollama.com
 # Then run:
 ollama pull phi3:mini
 ```
 
-**Step 5 — Train the ML model**
+**Step 5 - Train the ML model**
 ```bash
 python src/scorer.py
 ```
@@ -78,11 +78,11 @@ python src/scorer.py
 
 ## Running the Application
 
-### Option 1 — Web Interface (Recommended)
+### Option 1 - Web Interface (Recommended)
 Double click `run_app.bat`
 Browser opens automatically with the Streamlit app.
 
-### Option 2 — Command Line Interface
+### Option 2 - Command Line Interface
 
 ```bash
 # Summary statistics
@@ -104,13 +104,13 @@ python src/main.py --file data/WA_Fn-UseC_-Telco-Customer-Churn.csv --all
 
 Three pages available:
 
-- **Upload and Predict** — Upload a CSV file, run 
+- **Upload and Predict** - Upload a CSV file, run 
   the ML model, view all customers with churn 
   probability and risk category in a table
-- **Customer Detail** — Enter a customer ID to view 
+- **Customer Detail** - Enter a customer ID to view 
   full SHAP analysis and ask questions to the 
   LLM Q&A agent
-- **Summary Dashboard** — View risk distribution 
+- **Summary Dashboard** - View risk distribution 
   chart and average monthly charges per risk category
 
 ---
