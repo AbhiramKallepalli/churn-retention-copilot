@@ -273,6 +273,23 @@ LLM responses were evaluated using the 0-3 rubric defined in the project specifi
 
 Average LLM alignment score: 3.0 / 3.0
 
+### 7.3 Automated Unit Tests
+
+7 pytest unit tests were created and 
+all passed successfully:
+
+| Test | Result |
+|------|--------|
+| test_data_loads | PASSED |
+| test_preprocessing | PASSED |
+| test_high_risk_customer | PASSED |
+| test_low_risk_customer | PASSED |
+| test_missing_customer | PASSED |
+| test_model_loads | PASSED |
+| test_risk_categories | PASSED |
+
+All 7 tests passed successfully.
+
 All responses were grounded in actual model outputs and SHAP values. No hallucinated information was detected in any response.
 
 ---
