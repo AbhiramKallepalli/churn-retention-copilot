@@ -1,0 +1,7 @@
+2026-05-20 11:24:54 | INFO | ==================================================
+2026-05-20 11:24:54 | INFO | NEW SESSION STARTED
+2026-05-20 11:24:54 | INFO | ==================================================
+2026-05-20 11:24:54 | INFO | customer_id=7590-VHVEG | risk_category=MEDIUM RISK | churn_probability=65.0% | response_time=2.50s | llm_valid=True
+2026-05-20 11:24:54 | INFO | customer_id=9497-QCMMS | risk_category=HIGH RISK | churn_probability=95.4% | response_time=3.10s | llm_valid=True
+2026-05-20 11:24:54 | ERROR | ERROR | Test error message
+2026-05-20 11:24:54 | INFO | SUMMARY QUERY | total=7043 | high=592 | medium=2021 | low=4430
