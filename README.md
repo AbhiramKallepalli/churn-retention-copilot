@@ -125,6 +125,24 @@ Three pages available:
 | Recall | 54.01% |
 
 ---
+## Testing
+
+Run the automated test suite:
+
+```bash
+pytest tests/test_churn.py -v
+```
+
+All 7 tests pass successfully:
+- test_data_loads
+- test_preprocessing
+- test_high_risk_customer
+- test_low_risk_customer
+- test_missing_customer
+- test_model_loads
+- test_risk_categories
+
+---
 
 ## Repository Structure
 
