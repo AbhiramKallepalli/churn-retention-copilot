@@ -16,7 +16,6 @@ of results through a local LLM-powered Q&A interface.
 | LLM | Phi-3 Mini (via Ollama, runs locally) |
 | Interface | CLI + Streamlit Web UI |
 | Dataset | IBM Telco Customer Churn (Kaggle) |
-| Status | Project Complete - May 2026 |
 
 ---
 
